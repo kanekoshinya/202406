@@ -8,33 +8,43 @@
     <link rel="stylesheet" href="../static/css/userList.css">
 </head>
 
-
 <body>
-    <div id="wrapper"> <!-- 共通の処理 -->
+    <div id="wrapper">
         <header class="header">
             <h1>ユーザー一覧</h1>
         </header>
         <table class="table">
             <thead>
                 <tr>
-                    <th>ユーザーID</th>
-                    <th>名前</th>
-                    <th>フリガナ</th>
-                    <th>メールアドレス</th>
-                    <th>パスワード</th>
+                    <th>ユーザーID </th>
+                    <th>名前 </th>
+                    <th>フリガナ </th>
+                    <th>メールアドレス </th>
+                    <th>パスワード </th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="user : ${userlist}" th:object="${user}" class="align-middle">
-                    <td th:text="*{user_id}"></td>
-                    <td th:text="*{name}"></td>
-                    <td th:text="*{furigana}"></td>
-                    <td th:text="*{mail}"></td>
-                    <td th:text="*{password}"></td>
+                    <td th:text="*{user_id}">12345</td>
+                    <td th:text="*{name}">山田太郎</td>
+                    <td th:text="*{furigana}">ヤマダタロウ</td>
+                    <td th:text="*{mail}">yamada.tarou.12345@icloud.com</td>
+                    <td th:text="*{password}">tarotarrot</td>
                     <td><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn_03">出勤登録</a></td>
                     <td><a th:href="@{/attendanceList/{user_id}(user_id=*{user_id})}" class="btn_03">勤怠一覧</a></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>56789</td>
+                    <td>関田誠大</td>
+                    <td>セキタマサヒロ</td>
+                    <td>sekita.masahiro.56789@icloud.com</td>
+                    <td>setterdamashii</td>
+                    <td><a class="btn_03">出勤登録</a></td>
+                    <td><a class="btn_03">勤怠一覧</a></td>
                 </tr>
             </tbody>
         </table>
