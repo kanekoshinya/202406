@@ -1,0 +1,80 @@
+#wrapper {
+    /* 共通の処理 */
+    width: 100%;
+}
+
+.header {
+    background-color: #4689FF;
+    height: 100px;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+.form-group {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    margin: 100px 50px 50px 50px;
+}
+
+.form-group-left {
+    display: flex;
+}
+
+.form-group-right {
+    display: flex;
+}
+
+.parts{
+    margin-left: 50px;
+}
+
+.cp_iptxt {
+    position: relative;
+}
+
+.cp_iptxt input[type='text'] {
+    width: 150px;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    border: 1px solid #1b2538;
+    padding: 0.3em;
+    font-size: 20px;
+}
+
+.footer {
+    background-color: #4689FF;
+    height: 40px;
+}
+
+a.btn_03 {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 200px;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    border: 2px solid #4689FF;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 25px;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
