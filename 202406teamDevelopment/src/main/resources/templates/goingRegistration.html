@@ -12,28 +12,26 @@
      <div th:if="${validationError}" th:each="error : ${validationError}">
       <label class="text-danger" th:text="${error}"></label>
     </div>
-	
-   
  	 <div class="wrapper">
     <header class="header">
-      <h1>出勤登録</h1></header>
-		
+      <h1>出勤登録</h1></header>		
+
 		<form th:action="@{/goingRepository/create}" th:object="${goingRepository}" th:method="post">
       <div class="container">
+      <div class="form-group-left">
       <div class="form-group">
         <label>勤怠ID<span class="text-danger"></span></label>
         <input type="text" id="attendance_id" name="attendance_id" value="自動で採番される値" disabled>
       </div>
-      
+
       <div class="form-group">
         <label>ユーザーID<span class="text-danger"></span></label>
         <input type="text" id="user_id" name="user_id" disabled>
       </div>
-
-
+      
       <div class="form-group">
         <label>ステータス<span class="text-danger"></span></label>
-        <select class="form-group" id="status" disabled>
+        <select class="form-group.c" id="status" disabled>
             <option value="出勤">出勤</option>
             <option value="遅刻">遅刻</option>
             <option value="欠席">欠席</option>
@@ -48,7 +46,9 @@
         <label>出勤日<span class="text-danger"></span></label>
         <input type="date" id="going_date" name="going_date" data-toggle="datepicker" disabled >
       </div>
+    </div>
       
+    <div class="form-group-right">
       <div class="form-group">
         <label>出勤時間<span class="text-danger"></span></label>
         <input type="time" id="going_time" name="going_time" disabled>
@@ -59,16 +59,12 @@
         <input type="text" id="remarks" name="remarks">
       </div>
     </div>
-      
-      <div class="text-center">
+    </div>
+       <div class="text-center">
         <a class="btn">戻る　　</a>
         <a class="btn">出勤登録</a>
-       
       </div>
-   
     </form>
-  
- 
   <div class="footer"></div>
 </div>
 </body>
