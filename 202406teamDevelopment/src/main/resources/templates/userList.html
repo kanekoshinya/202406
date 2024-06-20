@@ -32,8 +32,8 @@
                     <td th:text="*{furigana}">ヤマダタロウ</td>
                     <td th:text="*{mail}">yamada.tarou.12345@icloud.com</td>
                     <td th:text="*{password}">tarotarrot</td>
-                    <td><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn_03">出勤登録</a></td>
-                    <td><a th:href="@{/attendanceList/{user_id}(user_id=*{user_id})}" class="btn_03">勤怠一覧</a></td>
+                    <td><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn">出勤登録</a></td>
+                    <td><a th:href="@{/attendanceList/{user_id}(user_id=*{user_id})}" class="btn">勤怠一覧</a></td>
                 </tr>
             </tbody>
             <tbody>
@@ -43,8 +43,8 @@
                     <td>セキタマサヒロ</td>
                     <td>sekita.masahiro.56789@icloud.com</td>
                     <td>setterdamashii</td>
-                    <td><a class="btn_03">出勤登録</a></td>
-                    <td><a class="btn_03">勤怠一覧</a></td>
+                    <td><a class="btn">出勤登録</a></td>
+                    <td><a class="btn">勤怠一覧</a></td>
                 </tr>
             </tbody>
         </table>
