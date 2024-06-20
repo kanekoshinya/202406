@@ -29,10 +29,10 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20%;
     left: 0;
     margin: auto;
-    width: 100%;
+    width: 70%;
     height: 3.2rem;
 }
 
@@ -44,21 +44,72 @@ h1 {
     display: flex;
 }
 
+.text_1 {
+    margin-bottom: 30px;
+}
+
 .parts {
     margin-left: 50px;
 }
 
 .cp_iptxt input[type='text'] {
-    width: 150px;
+    width: 250px;
     transition: 0.3s;
     letter-spacing: 1px;
-    border: 1px solid #1b2538;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
     padding: 0.3em;
     font-size: 20px;
+    margin-bottom: 30px;
+    background-color: #edebeb;
+}
+
+.box select {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid#736d6d;
+    border-radius: 3px;
+}
+
+.date_1 input[type='date'] {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
+}
+
+.time_1 input[type='time'] {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
+}
+
+.text-center {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 35%;
+    bottom: 0;
+    margin: auto;
+    width: 50%;
+    height: 3.2rem;
 }
 
 .footer {
-    background-color: #4689FF;
+    background-color:#4689ff;
     height: 40px;
     position: absolute;
     left: 0;
@@ -81,17 +132,7 @@ h1 {
     border: 0.2rem solid #4689ff;
     text-align: center;
     display: flex;
-}
-
-.text-center {
-    background-color: brown;
-    justify-content: center;
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    margin: auto;
-    width: 50%;
-    height: 3.2rem;
+    font-size: 25px;
 }
 
 * {

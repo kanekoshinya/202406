@@ -17,38 +17,41 @@
                 <div class="form-group">
                     <div class="form-group-left">
                         <div class="text">
-                            <div>勤怠ID</div>
-                            <div>ユーザーID</div>
-                            <div>ステータス</div>
-                            <div>退勤日</div>
+                            <div class="text_1">勤怠ID</div>
+                            <div class="text_1">ユーザーID</div>
+                            <div class="text_1">ステータス</div>
+                            <div class="text_1">退勤日</div>
                         </div>
                         <div class="parts">
                             <div class="cp_iptxt"><input type="text" name="attendance_id"></div>
                             <div class="cp_iptxt"><input type="text" name="user_id"></div>
-                            <div><select>
-                                    <option>--選択--</option>
-                                    <option>退勤</option>
-                                    <option>早退</option>
-                                </select></div>
-                            <div><input type="date"></div>
+                            <div class="box">
+                                <select>
+                                    <option value="1">---選択---</option>
+                                    <option value="2">退勤</option>
+                                    <option value="3">早退</option>
+                                </select>
+                            </div>
+                            <div class="date_1"><input type="date"></div>
                         </div>
                     </div>
                     <div class="form-group-right">
                         <div class="text">
-                            <div><label>退勤時間</label></div>
-                            <div><label>休憩時間</label></div>
-                            <div><label>備考</label></div>
+                            <div class="text_1">退勤時間</div>
+                            <div class="text_1">休憩時間</div>
+                            <div class="text_1">備考</div>
+                            <div class="text_1">出勤時間</div>
                         </div>
                         <div class="parts">
-                            <div><input type="time"></div>
-                            <div><input type="time"></div>
+                            <div class="time_1"><input type="time"></div>
+                            <div class="time_1"><input type="time"></div>
                             <div class="cp_iptxt"><input type="text" name="remarks"></div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <a class="btn">戻る</a>
-                        <a class="btn">登録</a>
-                    </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn">戻る</a>
+                    <a class="btn">登録</a>
                 </div>
             </div>
         <footer class="footer">
