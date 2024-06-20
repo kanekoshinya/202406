@@ -26,7 +26,6 @@ display:flex;
     padding:50px 0px ;
 }
 .form-group-right {
-    margin-bottom: 50px;
     padding:50px 0px ;
 }
 
@@ -35,7 +34,7 @@ display:flex;
     font-size: 20px;
     font-weight: bold;
     margin: 20px;
-    padding:25px 0px 25px 200px;
+    padding:25px 200px 25px 300px;
     width: 50%;
     max-width:400px;
 }
@@ -63,7 +62,16 @@ a.btn {
    text-align:center
    
 }
-
+.textbox-left{
+    width: 50%;
+    height: 40px;
+    margin: 0 0 0 auto;
+}
+.textbox-right{
+    width: 50%;
+    height: 40px;
+    margin: 0 0 0 auto;
+}
 
 .footer {
     width: 100%;
