@@ -87,10 +87,10 @@ h1 {
     background-color: brown;
     justify-content: center;
     display: flex;
-    justify-content: space-around;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    margin: auto;
+    width: 50%;
     height: 3.2rem;
 }
 
