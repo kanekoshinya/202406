@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user : ${userlist}" th:object="${user}" class="align-middle">
+                <tr th:each="attendance : ${attendanceList}" th:object="${attendance}" class="align-middle">
                     <td th:text="*{attendance_id}">10105</td>
                     <td th:text="*{user_id}">12345</td>
                     <td th:text="*{status}">出勤</td>
