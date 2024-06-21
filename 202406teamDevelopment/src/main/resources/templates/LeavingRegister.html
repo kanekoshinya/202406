@@ -23,29 +23,29 @@
                             <div class="text_1">退勤日</div>
                         </div>
                         <div class="parts">
-                            <div class="cp_iptxt"><input type="text" name="attendance_id"></div>
-                            <div class="cp_iptxt"><input type="text" name="user_id"></div>
-                            <div class="box">
+                            <div class="cp_iptxt"><input type="text" disabled id="attendance_id" name="attendance_id"></div>
+                            <div class="cp_iptxt"><input type="text" disabled id="user_id" name="user_id"></div>
+                            <div class="box" id="status" name="status">
                                 <select>
-                                    <option value="1">---選択---</option>
-                                    <option value="2">退勤</option>
-                                    <option value="3">早退</option>
+                                    <option disabled selected>---選択---</option>
+                                    <option value="退勤">退勤</option>
+                                    <option value="早退">早退</option>
                                 </select>
                             </div>
-                            <div class="date_1"><input type="date"></div>
+                            <div class="date_1" id="leaving_date" name="leaving_date"><input type="date"></div>
                         </div>
                     </div>
                     <div class="form-group-right">
-                        <div class="text">
+                        <div class="text" name="">
                             <div class="text_1">退勤時間</div>
                             <div class="text_1">休憩時間</div>
                             <div class="text_1">備考</div>
-                            <div class="text_1">出勤時間</div>
                         </div>
                         <div class="parts">
-                            <div class="time_1"><input type="time"></div>
-                            <div class="time_1"><input type="time"></div>
-                            <div class="cp_iptxt"><input type="text" name="remarks"></div>
+                            <div class="time_1" id="leaving_time" name="leaving_time"><input type="time"></div>
+                            <div class="time_1" id="break_time" name="break_time"><input type="time"></div>
+                            <div class="cp_iptxt" id="remarks" name="remarks"><input type="text" name="remarks"></div>
+                            <div class="hidden"><input type="hidden" id="going_time" name="going_time"></div>
                         </div>
                     </div>
                 </div>
