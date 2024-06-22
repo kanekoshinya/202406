@@ -1,14 +1,8 @@
 .wrapper {
-    min-height: 100vh;
     width: 100%;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 60px;
-    box-sizing: border-box;
 }
 .header {
-    background-color: hsl(218, 100%, 64%);
+    background-color: #4689FF;
     height: 100px;
 }
 h1 {
@@ -18,50 +12,43 @@ h1 {
     margin-left: 20px;
 }
 .container{
-display:flex;
+    display: flex;
+    justify-content: center;
 }
 
 .form-group-left{
     margin-bottom: 50px;
-    padding:50px 0px ;
+    padding:220px 0px 0px 0px;
 }
 .form-group-right {
-    padding:50px 0px ;
+    text-align: left;
+    padding:220px 0px 0px 0px;
 }
 
 .form-group{
     display: flex;
-<<<<<<< Updated upstream
-    font-size: 20px;
-=======
     font-size: 25px;
->>>>>>> Stashed changes
     font-weight: bold;
-    margin: 20px;
-    padding:25px 200px 25px 300px;
-    width: 50%;
-    max-width:400px;
+    padding:25px 60px 0px 150px;
+    max-width:600px;
+    justify-content: space-around;
 }
 
 .text-center{
     margin-bottom: 30px;
     display: flex;
-    padding: 0px 300px;
     justify-content: center;
 }
 
 a.btn {
+    font-size: 25px;
     position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
+    margin: 0px  160px;
     max-width: 100px;
-<<<<<<< Updated upstream
-    padding: 10px 25px;
-=======
-    padding: 10px 40px;
->>>>>>> Stashed changes
+    padding: 5px 50px;
     color: #000000;
     transition: 0.3s ease-in-out;
     font-weight: 600;
@@ -70,28 +57,35 @@ a.btn {
    text-align:center
    
 }
+.text-danger{
+    margin: 0 50px 0 auto;
+}
 .textbox-left{
-    width: 50%;
     height: 40px;
     margin: 0 0 0 auto;
+    width: 250px;
+    letter-spacing: 1px;
+    border: 1px solid #736d6d;
+    font-size: 20px;
+    background-color: #edebeb;
+    border-radius: 3px;
+    text-align: center;
 }
 .textbox-right{
-    width: 50%;
     height: 40px;
     margin: 0 0 0 auto;
+    width: 250px;
+    letter-spacing: 1px;
+    border: 1px solid #736d6d;
+    font-size: 20px;
+    background-color: #edebeb;
+    border-radius: 3px;
+    text-align: center;
 }
 
 .footer {
     width: 100%;
     text-align: center;
-<<<<<<< Updated upstream
-    position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
-    background-color: #4689FF;
-    height: 40px;
-    
-}
-=======
     position: absolute;
     bottom: 0; 
     background-color: #4689FF;
@@ -102,4 +96,3 @@ a.btn {
     padding: 0;
 }
 
->>>>>>> Stashed changes
