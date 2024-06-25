@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>出勤登録</title>
- <link rel="stylesheet" href="../static/css/goingRegistration.css">
+ <link rel="stylesheet" th:href="@{css/goingRegistration.css}">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <label>ユーザーID<span class="text-danger"></span></label>
-        <input type="text" class="textbox-right" id="user_id" name="user_id" disabled>
+        <input type="text" class="textbox-right" id="user_id" name="user_id">
       </div>
       
       <div class="form-group">
@@ -62,8 +62,8 @@
     </div>
     </div>
        <div class="text-center">
-        <a class="btn">戻る</a>
-        <a class="btn">登録</a>
+        <a href="/userList" class="btn">戻る</a>
+        <a href="/attendanceList" class="btn">登録</a>
       </div>
     </form>
   <div class="footer"></div>
