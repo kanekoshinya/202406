@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ユーザー一覧</title>
-    <link rel="stylesheet" href="../static/css/userList.css">
+	<link th:href="@{css/userList.css}" rel="stylesheet"></link>
 </head>
 
 <body>
@@ -26,25 +26,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user : ${userlist}" th:object="${user}" class="align-middle">
-                    <td th:text="*{user_id}">12345</td>
-                    <td th:text="*{name}">山田太郎</td>
-                    <td th:text="*{furigana}">ヤマダタロウ</td>
-                    <td th:text="*{mail}">yamada.tarou.12345@icloud.com</td>
-                    <td th:text="*{password}">tarotarrot</td>
-                    <td><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn">出勤登録</a></td>
+                <tr th:each="user_tb: ${userlist}" th:object="${user_tb}">
+                    <td th:text="*{user_id}"></td>
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{furigana}"></td>
+                    <td th:text="*{mail}"></td>
+                    <td th:text="*{password}"></td>
+                    <td class="btn_01"><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn">出勤登録</a></td>
                     <td><a th:href="@{/attendanceList/{user_id}(user_id=*{user_id})}" class="btn">勤怠一覧</a></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>56789</td>
-                    <td>関田誠大</td>
-                    <td>セキタマサヒロ</td>
-                    <td>sekita.masahiro.56789@icloud.com</td>
-                    <td>setterdamashii</td>
-                    <td><a class="btn">出勤登録</a></td>
-                    <td><a class="btn">勤怠一覧</a></td>
                 </tr>
             </tbody>
         </table>
