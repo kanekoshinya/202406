@@ -10,28 +10,25 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.form.goingRepositoryRequest;
-import com.example.demo.service.goingRepositoryService;
-import com.example.demo.entity.goingRepositoryEntity;
+import com.example.demo.form.GoingRegisterForm;
+import com.example.demo.service.GoingRegisterService;
 
 @Controller
-public class goingRepositoryController {
+public class GoingRegisterController {
 	 @Autowired
-	 goingRepositoryService goingRepositoryService;
+	 GoingRegisterService goingRegisterService;
 	
 	 //登録するための画面表示
 	 @GetMapping("/goingRepository")
 	  public String goingRepository(Model model) {
-	    model.addAttribute("goingRepositoryRequest", new goingRepositoryRequest());
+	    model.addAttribute("goingRepositoryRequest", new GoingRegisterForm());
 	    return "goingRegistration";
 	  }
 
 	 @PostMapping("/goingRepository")
-	 public String goingRepositorytCreate(@Validated goingRepositoryRequest goingRepositoryRequest, BindingResult result, Model model) {
+	 public String goingRepositorytCreate(@Validated GoingRegisterForm goingRegisterRequest, BindingResult result, Model model) {
 	 
 	 if (result.hasErrors()) {
 	     // 入力チェックエラーの場合
@@ -39,12 +36,13 @@ public class goingRepositoryController {
 	     for (ObjectError error : result.getAllErrors()) {
 	       errorList.add(error.getDefaultMessage());
 	     }
-	     model.addAttribute("goingRepositoryRequest", new goingRepositoryRequest());
+	     model.addAttribute("GoingRegisterRequest", new GoingRegisterForm());
 	     model.addAttribute("validationError", errorList);
 	     return "goingRegistration";
 	   }
 	   // 登録
-	 goingRepositoryService.create(goingRepositoryRequest);
+	 GoingRegisterService service = new GoingRegisterService();
+	 service.create(goingRegisterRequest);
 	   return "redirect:/attendanceList";
 	 }
 }

@@ -5,9 +5,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
-
 @Data
-public class goingRepositoryRequest implements Serializable {
+public class GoingRegisterForm implements Serializable {
 	@NotEmpty(message = "IDを入力してください")
 	  private String user_id;
 	

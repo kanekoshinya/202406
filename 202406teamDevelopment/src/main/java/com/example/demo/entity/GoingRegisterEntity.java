@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Table(name = "attendance", schema = "public")
 
-public class goingRepositoryEntity {
+public class GoingRegisterEntity {
 	/* 勤怠ID */
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
