@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class GoingRegisterForm implements Serializable {
 	@NotEmpty(message = "IDを入力してください")
-	  private String user_id;
+	  private Integer  user_id;
 	
 	 @NotEmpty(message = "ステータスを入力してください")
 	  private String status;

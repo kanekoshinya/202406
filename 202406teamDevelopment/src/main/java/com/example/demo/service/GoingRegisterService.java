@@ -14,7 +14,7 @@ import com.example.demo.repository.GoingRegisterRepository;
 @Transactional(rollbackFor = Exception.class)
 public class GoingRegisterService {
 	 @Autowired
-	  private  GoingRegisterRepository  goingRegisterRepository;
+	  private  GoingRegisterRepository goingRegisterRepository;
 	 
 	 public List<GoingRegisterEntity> searchAll() {
 		   return goingRegisterRepository.findAll();
@@ -23,13 +23,13 @@ public class GoingRegisterService {
 		 return goingRegisterRepository.getOne(id);
 	  }
 
- public void create(GoingRegisterForm goingRegisterRequest) {
-	 GoingRegisterForm user = new GoingRegisterForm();
-		 user.setUser_id(goingRegisterRequest.getUser_id());
-	 	 user.setStatus(goingRegisterRequest.getStatus());
-		 user.setGoing_date(goingRegisterRequest.getGoing_date());
-		 user.setGoing_time(goingRegisterRequest.getGoing_time());
-		 user.setRemarks(goingRegisterRequest.getRemarks());
+ public void create(GoingRegisterForm goingRegisterForm) {
+	 GoingRegisterEntity user = new GoingRegisterEntity();
+		 user.setUser_id(goingRegisterForm.getUser_id());
+	 	 user.setStatus(goingRegisterForm.getStatus());
+		 user.setGoing_date(goingRegisterForm.getGoing_date());
+		 user.setGoing_time(goingRegisterForm.getGoing_time());
+		 user.setRemarks(goingRegisterForm.getRemarks());
 		 goingRegisterRepository.save(user);
 	 
 	 }
