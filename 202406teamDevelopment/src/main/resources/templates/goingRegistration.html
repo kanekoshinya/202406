@@ -9,14 +9,15 @@
 </head>
 
 <body>
-     <div th:if="${validationError}" th:each="error : ${validationError}">
+     
+ 	 <div class="wrapper">
+		  <div th:if="${validationError}" th:each="error : ${validationError}">
       <label class="text-danger" th:text="${error}"></label>
     </div>
- 	 <div class="wrapper">
     <header class="header">
       <h1>出勤登録</h1></header>		
 
-		<form th:action="@{/goingRepository/create}" th:object="${goingRepository}" th:method="post">
+		<form th:action="@{/goingRepository/create}" th:object="${goingRepositoryForm}" th:method="post">
       <div class="container">
       <div class="form-group-left">
       <div class="form-group">
@@ -26,12 +27,12 @@
 
       <div class="form-group">
         <label>ユーザーID<span class="text-danger"></span></label>
-        <input type="text" class="textbox-right" id="user_id" name="user_id">
+        <input type="text" class="textbox-right" id="user_id" name="user_id" th:field="*{user_id}">
       </div>
       
       <div class="form-group">
         <label>ステータス<span class="text-danger"></span></label>
-        <select class="textbox-right" id="status">
+        <select class="textbox-right" id="status" name=“status” th:field="*{status}">
            <option value="選択">---選択---</option>
             <option value="出勤">出勤</option>
             <option value="遅刻">遅刻</option>
@@ -45,25 +46,25 @@
 
       <div class="form-group">
         <label>出勤日<span class="text-danger"></span></label>
-        <input type="date" class="textbox-right" id="going_date" name="going_date" data-toggle="datepicker">
+        <input type="date" class="textbox-right" id="going_date" name="going_date" th:field="*{going_date}" data-toggle="datepicker">
       </div>
     </div>
       
     <div class="form-group-right">
       <div class="form-group">
         <label>出勤時間<span class="text-danger"></span></label>
-        <input type="time" class="textbox-left" id="going_time" name="going_time">
+        <input type="time" class="textbox-left" id="going_time" name="going_time" th:field="*{going_time}">
       </div>
       
       <div class="form-group">
         <label>備考<span class="text-danger"></span></label>
-        <input type="text" class="textbox-left" id="remarks" name="remarks">
+        <input type="text" class="textbox-left" id="remarks" name="remarks" th:field="*{remarks}">
       </div>
     </div>
     </div>
        <div class="text-center">
-        <a href="/userList" class="btn">戻る</a>
-        <a href="/attendanceList" class="btn">登録</a>
+        <a th:href="@{/userList}" class="btn">戻る</a>
+        <input type="submit"  name=”btn” value="登録" class="btn">
       </div>
     </form>
   <div class="footer"></div>

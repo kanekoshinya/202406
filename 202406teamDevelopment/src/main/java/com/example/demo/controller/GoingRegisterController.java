@@ -28,7 +28,7 @@ public class GoingRegisterController {
 	  }
 
 	 @PostMapping("/goingRepository")
-	 public String goingRepositorytCreate(@Validated GoingRegisterForm goingRegisterForm, BindingResult result, Model model) {
+	 public String goingRepositoryCreate(@Validated GoingRegisterForm goingRegisterForm, BindingResult result, Model model) {
 	 
 	 if (result.hasErrors()) {
 	     // 入力チェックエラーの場合
@@ -36,13 +36,13 @@ public class GoingRegisterController {
 	     for (ObjectError error : result.getAllErrors()) {
 	       errorList.add(error.getDefaultMessage());
 	     }
-	     model.addAttribute("GoingRegisterRequest", new GoingRegisterForm());
+	     //エラー判定後の画面遷移
+	     model.addAttribute("GoingRepositoryForm", goingRegisterForm);
 	     model.addAttribute("validationError", errorList);
 	     return "goingRepository";
 	   }
 	   // 登録
-	 GoingRegisterService service = new GoingRegisterService();
-	 service.create(goingRegisterForm);
+	 goingRegisterService.create(goingRegisterForm);
 	   return "redirect:/attendanceList";
 	 }
 }

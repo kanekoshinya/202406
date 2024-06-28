@@ -42,6 +42,7 @@ h1 {
 
 a.btn {
     font-size: 25px;
+    background-color: #fff;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -49,6 +50,24 @@ a.btn {
     margin: 0px  160px;
     max-width: 100px;
     padding: 5px 50px;
+    color: #000000;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 0.2rem solid #4689ff;
+   text-align:center
+   
+}
+.btn {
+    font-size: 25px;
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px  160px;
+    max-width: 100px;
+    padding: 5px 95px 5px 50px;
     color: #000000;
     transition: 0.3s ease-in-out;
     font-weight: 600;
