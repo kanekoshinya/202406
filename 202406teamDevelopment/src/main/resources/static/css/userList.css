@@ -61,11 +61,11 @@ td {
     padding: 5px 10px 5px 10px;
     color: #000000;
     transition: 0.3s ease-in-out;
-    border-radius: 10px;
     border: 0.2rem solid #4689ff;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 * {

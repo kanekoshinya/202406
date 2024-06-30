@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-
+//ユーザー情報Entity
 @Data
 @Entity
 @Table(name = "user_tb", schema = "public")

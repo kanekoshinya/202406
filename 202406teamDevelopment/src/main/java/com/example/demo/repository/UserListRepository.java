@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.UserListEntity;
 
+//ユーザー情報Repository
 @Repository
 public interface UserListRepository extends JpaRepository<UserListEntity, Integer> {
 

@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.UserListEntity;
 import com.example.demo.repository.UserListRepository;
-
+//ユーザー一覧情報Service
 @Service
 public class UserListService {
 
-	// ユーザー一覧情報
+	// ユーザー一覧情報Repository
 	@Autowired
 	private UserListRepository userlistRepository;
 
-	// 全検索
+	// 全ユーザー検索メソッド
 	// 検索結果
-	public List<UserListEntity> searchAll() {
+	public List<UserListEntity> getAllUsers() {
 		return userlistRepository.findAll();
+
 	}
 }
