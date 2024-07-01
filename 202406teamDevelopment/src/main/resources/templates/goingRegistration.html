@@ -17,7 +17,7 @@
     <header class="header">
       <h1>出勤登録</h1></header>		
 
-		<form th:action="@{/goingRepository/create}" th:object="${goingRepositoryForm}" th:method="post">
+		<form th:action="@{/goingRegistration}" th:object="${goingRegisterForm}" th:method="post">
       <div class="container">
       <div class="form-group-left">
       <div class="form-group">
@@ -33,14 +33,14 @@
       <div class="form-group">
         <label>ステータス<span class="text-danger"></span></label>
         <select class="textbox-right" id="status" name=“status” th:field="*{status}">
-           <option value="選択">---選択---</option>
+           <option value="">---選択---</option>
             <option value="出勤">出勤</option>
             <option value="遅刻">遅刻</option>
             <option value="欠席">欠席</option>
-            <option value="欠席">代休</option>
-            <option value="欠席">所定休</option>
-            <option value="欠席">有休</option>
-            <option value="欠席">その他</option>
+            <option value="代休">代休</option>
+            <option value="所定休">所定休</option>
+            <option value="有休">有休</option>
+            <option value="その他">その他</option>
           </select>
       </div>
       <div class="form-group">
@@ -62,8 +62,8 @@
     </div>
     </div>
        <div class="text-center">
-        <a th:href="@{/userList/(user_id=*{user_id})}" class="btn btn-primary">戻る</a>
-        <input type="submit"  name=”btn” value="登録" class="btn btn-primary">
+        <a th:href="@{/userList/(user_id=*{user_id})}" class="btn">戻る</a>
+        <input type="submit"  name=”btn” value="登録" class="btn">
       </div>
     </form>
   <div class="footer"></div>
