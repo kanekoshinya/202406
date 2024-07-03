@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠一覧</title>
-    <link rel="stylesheet" href="../static/css/attendanceList.css">
+    <link rel="stylesheet"th:href="@{css/attendanceList.css}">
 </head>
 <body>
     <div class="wrapper">
@@ -24,94 +24,44 @@
                     <th>稼働時間</th>
                     <th>休憩時間</th>
                     <th>備考</th>
-                    <td></td>
-                    <td></td>
-
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+<<<<<<< Updated upstream
                 <tr th:each="attendance : ${attendanceList}" th:object="${attendance}" class="align-middle">
                     <td th:text="*{attendance_id}">10105</td>
                     <td th:text="*{user_id}">12345</td>
                     <td th:text="*{status}">出勤</td>
                     <td th:text="*{going_date}">04/05</td>
                     <td th:text="*{going_time}">8:00</td>
+=======
+                <tr th:each="user : ${attendanceList}" th:object="${user}" class="align-middle">
+                    <td th:text="*{attendance_id}"></td>
+                    <td th:text="*{user_id}"></td>
+                    <td th:text="*{status}"></td>
+                    <td th:text="*{going_date}"></td>
+                    <td th:text="*{going_time}"></td>
+>>>>>>> Stashed changes
                     <td th:text="*{leaving_date}"></td>
                     <td th:text="*{leaving_time}"></td>
                     <td th:text="*{working_time}"></td>
                     <td th:text="*{break_time}"></td>
                     <td th:text="*{remarks}"></td>
                     <td></td>
-                    <td><a th:href="@{/goingRepository/(user_id=*{user_id})}" class="btn">退勤登録</a></td>
+                    <td><a th:href="@{/leavingRegister/(user_id=*{user_id})}" class="btn">退勤登録</a></td>
                 </tr>
             </tbody>
-            <tbody>
-                <tr>
-                    <td>10104</td>
-                    <td>12345</td>
-                    <td>退勤</td>
-                    <td>04/04</td>
-                    <td>8:00</td>
-                    <td>04/04</td>
-                    <td>17:00</td>
-                    <td>8:00</td>
-                    <td>1:00</td>
-                    <td></td>
-                    <td></td>
-                    <td><a class="btn">退勤登録</a></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>10103</td>
-                    <td>12345</td>
-                    <td>退勤</td>
-                    <td>04/03</td>
-                    <td>8:00</td>
-                    <td>04/03</td>
-                    <td>17:00</td>
-                    <td>8:00</td>
-                    <td>1:00</td>
-                    <td></td>
-                    <td></td>
-                    <td><a class="btn">退勤登録</a></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>10102</td>
-                    <td>12345</td>
-                    <td>退勤</td>
-                    <td>04/02</td>
-                    <td>8:00</td>
-                    <td>04/02</td>
-                    <td>17:00</td>
-                    <td>8:00</td>
-                    <td>1:00</td>
-                    <td></td>
-                    <td></td>
-                    <td><a class="btn">退勤登録</a></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>10101</td>
-                    <td>12345</td>
-                    <td>退勤</td>
-                    <td>04/01</td>
-                    <td>8:00</td>
-                    <td>04/01</td>
-                    <td>17:00</td>
-                    <td>8:00</td>
-                    <td>1:00</td>
-                    <td></td>
-                    <td></td>
-                    <td><a class="btn">退勤登録</a></td>
-                </tr>
-            </tbody>
+           
+           
         </table>
         <div class="text-center">
+<<<<<<< Updated upstream
             <a class="btn-1">戻る</a>
+=======
+             <a th:href="@{/userList/(user_id=*{user_id})}" class="btn">戻る</a>
+>>>>>>> Stashed changes
         </div>
         <footer class="footer">
         </footer>
