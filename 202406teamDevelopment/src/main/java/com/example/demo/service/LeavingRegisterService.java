@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,19 +11,27 @@ import com.example.demo.repository.LeavingRegisterRepository;
 
 @Service
 public class LeavingRegisterService {
-	
-	@Autowired
-	  private LeavingRegisterRepository leavingregisterRepository;
-	
-	public void create(LeavingRegisterForm leavingregisterRequest) {
-	   LeavingRegisterEntity leavingregister = new LeavingRegisterEntity();
-	   leavingregister.setAttendance_id(leavingregisterRequest.getAttendance_id());
-	   leavingregister.setUser_id(leavingregisterRequest.getUser_id());
-	   leavingregister.setStatus(leavingregisterRequest.getStatus());
-	   leavingregister.setLeaving_date(leavingregisterRequest.getLeaving_date());
-	   leavingregister.setLeaving_time(leavingregisterRequest.getLeaving_time());
-	   leavingregister.setBreak_time(leavingregisterRequest.getBreak_time());
-	   leavingregister.setRemarks(leavingregisterRequest.getRemarks());
-	   leavingregisterRepository.save(leavingregister);
-	 }
+    
+    @Autowired
+    private LeavingRegisterRepository leavingRegisterRepository;
+
+    public List<LeavingRegisterEntity> searchAll() {
+        return leavingRegisterRepository.findAll();
+    }
+
+    public LeavingRegisterEntity findById(Integer id) {
+        return leavingRegisterRepository.findById(id).orElse(null);
+    }
+
+    public void create(LeavingRegisterForm leavingRegisterRequest) {
+        LeavingRegisterEntity leavingRegister = new LeavingRegisterEntity();
+        leavingRegister.setAttendance_id(leavingRegisterRequest.getAttendance_id());
+        leavingRegister.setUser_id(leavingRegisterRequest.getUser_id());
+        leavingRegister.setStatus(leavingRegisterRequest.getStatus());
+        leavingRegister.setLeaving_date(leavingRegisterRequest.getLeaving_date());
+        leavingRegister.setLeaving_time(leavingRegisterRequest.getLeaving_time());
+        leavingRegister.setBreak_time(leavingRegisterRequest.getBreak_time());
+        leavingRegister.setRemarks(leavingRegisterRequest.getRemarks());
+        leavingRegisterRepository.save(leavingRegister);
+    }
 }
