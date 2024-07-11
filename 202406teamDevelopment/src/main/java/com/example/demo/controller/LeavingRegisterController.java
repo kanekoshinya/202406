@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.form.LeavingRegisterForm;
@@ -24,14 +23,14 @@ public class LeavingRegisterController {
     
     // 退勤登録画面の表示
     @GetMapping("/LeavingRegister")
-    public String showLeavingRegisterForm(Model model) {
+    public String LeavingRegisterForm(Model model) {
         model.addAttribute("leavingRegisterForm", new LeavingRegisterForm());
         return "LeavingRegister";
     }
     
     // 退勤登録
     @PostMapping("/LeavingRegister")
-    public String registerLeaving(@Validated @ModelAttribute LeavingRegisterForm leavingregisterForm, BindingResult result, Model model) {
+    public String LeavingRegisterUpdate(@Validated LeavingRegisterForm leavingregisterForm, BindingResult result, Model model) {
         if (result.hasErrors()) {
             // 入力チェックエラーの場合
             List<String> errorList = new ArrayList<>();
@@ -43,7 +42,7 @@ public class LeavingRegisterController {
             return "LeavingRegister";
         }
         // 登録
-        leavingRegisterService.create(leavingregisterForm);
+        leavingRegisterService.update(leavingregisterForm);
         return "redirect:/attendanceList";
     }
 }

@@ -26,8 +26,8 @@
                             <div class="text_1">退勤日</div>
                         </div>
                         <div class="parts">
-                            <div class="cp_iptxt"><input type="text" disabled th:field="*{attendance_id}" value="自動で採番される値"></div>
-                            <div class="cp_iptxt"><input type="text" disabled th:field="*{user_id}" value="自動で採番される値"></div>
+							<div class="cp_iptxt"><input type="text" th:field="*{attendance_id}" disabled></div>
+							<div class="cp_iptxt"><input type="text" th:field="*{user_id}" disabled></div>
                             <div class="box">
                                 <select th:field="*{status}">
                                     <option value="">---選択---</option>

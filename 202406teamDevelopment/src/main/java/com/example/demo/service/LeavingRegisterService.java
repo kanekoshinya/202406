@@ -23,7 +23,7 @@ public class LeavingRegisterService {
         return leavingRegisterRepository.findById(id).orElse(null);
     }
 
-    public void create(LeavingRegisterForm leavingRegisterRequest) {
+    public void update(LeavingRegisterForm leavingRegisterRequest) {
         LeavingRegisterEntity leavingRegister = new LeavingRegisterEntity();
         leavingRegister.setAttendance_id(leavingRegisterRequest.getAttendance_id());
         leavingRegister.setUser_id(leavingRegisterRequest.getUser_id());
