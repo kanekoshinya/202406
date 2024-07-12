@@ -146,6 +146,13 @@ h1 {
     width: 100%;
 }
 
+/* バリデーションメッセージ */
+.error-message {
+    color: red;
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
