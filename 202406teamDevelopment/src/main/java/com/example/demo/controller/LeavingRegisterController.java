@@ -44,8 +44,6 @@ public class LeavingRegisterController {
     }
     
     private Integer getUserIdFromPrincipal(Principal principal) {
-        // 例として、セッションまたは認証情報からユーザーIDを取得するロジックを実装する
-        // 以下は仮の例です。実際の実装に合わせて修正してください。
         return Integer.parseInt(principal.getName());
     }
 
