@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.entity.LeavingRegisterEntity;
 import com.example.demo.form.LeavingRegisterForm;
 import com.example.demo.service.LeavingRegisterService;
 
@@ -28,18 +26,6 @@ public class LeavingRegisterController {
     @GetMapping("/LeavingRegister")
     public String leavingRegisterForm(Model model, Principal principal) {
         LeavingRegisterForm form = new LeavingRegisterForm();
-
-        // 認証されたユーザー情報からユーザーIDを取得
-        Integer userId = getUserIdFromPrincipal(principal); // ここでユーザーIDを取得するメソッドを呼び出す
-        
-        // ユーザーIDからattendance_idを取得
-        Optional<LeavingRegisterEntity> attendance = leavingRegisterService.findAttendanceByUserId(userId);
-        if (attendance.isPresent()) {
-            form.setAttendance_id(attendance.get().getAttendance_id());
-            form.setUser_id(userId);
-        }
-
-        model.addAttribute("leavingRegisterForm", form);
         return "LeavingRegister";
     }
     
