@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +13,9 @@ public class LeavingRegisterService {
     @Autowired
     private LeavingRegisterRepository leavingRegisterRepository;
 
-    public List<LeavingRegisterEntity> searchAll() {
-        return leavingRegisterRepository.findAll();
-    }
+//    public List<LeavingRegisterEntity> searchAll() {
+//        return leavingRegisterRepository.findAll();
+//    }
 
     public LeavingRegisterEntity findById(Integer id) {
         return leavingRegisterRepository.findById(id).orElse(null);
@@ -32,6 +30,7 @@ public class LeavingRegisterService {
         leavingRegister.setLeaving_time(leavingRegisterRequest.getLeaving_time());
         leavingRegister.setBreak_time(leavingRegisterRequest.getBreak_time());
         leavingRegister.setRemarks(leavingRegisterRequest.getRemarks());
+        leavingRegister.setGoing_time(leavingRegisterRequest.getGoing_time());
         leavingRegisterRepository.save(leavingRegister);
     }
 }

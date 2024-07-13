@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+//ユーザー情報Entity
 @Data
 @Entity
 @Table(name = "attendance", schema = "public")
@@ -32,8 +33,8 @@ public class LeavingRegisterEntity {
     private String status;
 
     // 出勤日
-    @Column(name = "going_date")
-    private LocalDate going_date;
+//    @Column(name = "going_date")
+//    private LocalDate going_date;
 
     // 出勤時間
     @Column(name = "going_time")

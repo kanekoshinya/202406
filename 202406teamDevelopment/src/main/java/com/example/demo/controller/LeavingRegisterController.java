@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,30 +23,26 @@ public class LeavingRegisterController {
     
     // 退勤登録画面の表示
     @GetMapping("/LeavingRegister")
-    public String leavingRegisterForm(Model model, Principal principal) {
-        LeavingRegisterForm form = new LeavingRegisterForm();
+    public String LeavingRegisterForm(Model model) {
+        model.addAttribute("leavingRegisterForm", new LeavingRegisterForm());
         return "LeavingRegister";
     }
     
-    private Integer getUserIdFromPrincipal(Principal principal) {
-        return Integer.parseInt(principal.getName());
-    }
-
     // 退勤登録
     @PostMapping("/LeavingRegister")
-    public String leavingRegisterUpdate(@Validated LeavingRegisterForm leavingRegisterForm, BindingResult result, Model model) {
+    public String LeavingRegisterUpdate(@Validated LeavingRegisterForm leavingregisterForm, BindingResult result, Model model) {
         if (result.hasErrors()) {
             // 入力チェックエラーの場合
-            List<String> errorList = new ArrayList<String>();
+            List<String> errorList = new ArrayList<>();
             for (ObjectError error : result.getAllErrors()) {
                 errorList.add(error.getDefaultMessage());
             }
-            model.addAttribute("leavingRegisterForm", leavingRegisterForm);
+            model.addAttribute("LeavingRegisterForm", leavingregisterForm);
             model.addAttribute("validationError", errorList);
             return "LeavingRegister";
         }
         // 登録
-        leavingRegisterService.update(leavingRegisterForm);
+        leavingRegisterService.update(leavingregisterForm);
         return "redirect:/attendanceList";
     }
 }

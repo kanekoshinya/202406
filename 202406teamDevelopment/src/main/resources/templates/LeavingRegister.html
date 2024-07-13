@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -25,10 +24,10 @@
                         </div>
                         <div class="parts">
                             <div class="cp_iptxt">
-                                <input type="text" th:field="*{attendance_id}" readonly>
+                                <input type="text" th:field="*{attendance_id}" disabled>
                             </div>
                             <div class="cp_iptxt">
-                                <input type="text" th:field="*{user_id}" readonly>
+                                <input type="text" th:field="*{user_id}" disabled>
                             </div>
                             <div class="box">
                                 <select th:field="*{status}">
@@ -40,7 +39,7 @@
                             </div>
                             <div class="date_1">
                                 <input type="date" th:field="*{leaving_date}">
-                                <span class="error-message" th:if="${#fields.hasErrors('leaving_date')}" th:errors="*{leaving_date}"></span>
+								<span class="error-message" th:if="${#fields.hasErrors('leaving_date')}" th:errors="*{leaving_date}"></span>
                             </div>
                         </div>
                     </div>
@@ -57,7 +56,7 @@
                             </div>
                             <div class="time_1">
                                 <input type="time" th:field="*{break_time}">
-                                <span class="error-message" th:if="${#fields.hasErrors('break_time')}" th:errors="*{break_time}"></span>
+								<span class="error-message" th:if="${#fields.hasErrors('break_time')}" th:errors="*{break_time}"></span>
                             </div>
                             <div class="cp_iptxt">
                                 <input type="text" th:field="*{remarks}">
@@ -77,4 +76,7 @@
         </form>
         <footer class="footer">
         </footer>
-    </div
+    </div>
+</body>
+
+</html>
