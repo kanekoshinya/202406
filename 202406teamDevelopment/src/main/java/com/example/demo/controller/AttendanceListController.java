@@ -16,7 +16,7 @@ public class AttendanceListController {
 
 	@GetMapping("/attendanceList")
 	public String attendanceList(Model model) {
-		List<AttendanceListEntity> attendanceList = AttendanceListService.searchAll();
+		List<AttendanceListEntity> attendanceList = AttendanceListService.findByUser_idEquals(1);
 		model.addAttribute("attendanceList", attendanceList);
 		return "attendanceList";
 	}

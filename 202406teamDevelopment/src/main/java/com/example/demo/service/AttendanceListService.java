@@ -12,7 +12,7 @@ public class AttendanceListService {
 	@Autowired
 	private AttendanceListRepository attendanceListRepository;
 
-	public List<AttendanceListEntity> searchAll() {
+	public List<AttendanceListEntity> findByUser_idEquals(Integer user_id) {
 		return attendanceListRepository.findAll();
 	}
 	public AttendanceListEntity findById(Integer id) {		
