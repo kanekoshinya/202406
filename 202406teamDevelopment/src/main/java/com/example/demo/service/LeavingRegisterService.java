@@ -16,13 +16,16 @@ public class LeavingRegisterService {
 //    public List<LeavingRegisterEntity> searchAll() {
 //        return leavingRegisterRepository.findAll();
 //    }
+//    public List<LeavingRegisterEntity> findByAttendance_idEquals(Integer attendance_id) {
+//		return leavingRegisterRepository.findAll();
+//    }
 
-    public LeavingRegisterEntity findById(Integer attendance_id) {
+    public LeavingRegisterEntity findByAttendance_id(Integer attendance_id) {
         return leavingRegisterRepository.getOne(attendance_id);
     }
 
     public void update(LeavingRegisterForm leavingRegisterUpdateRequest) {
-        LeavingRegisterEntity leavingRegister = findById(leavingRegisterUpdateRequest.getAttendance_id());
+        LeavingRegisterEntity leavingRegister = findByAttendance_id(leavingRegisterUpdateRequest.getAttendance_id());
         leavingRegister.setAttendance_id(leavingRegisterUpdateRequest.getAttendance_id());
         leavingRegister.setUser_id(leavingRegisterUpdateRequest.getUser_id());
         leavingRegister.setStatus(leavingRegisterUpdateRequest.getStatus());

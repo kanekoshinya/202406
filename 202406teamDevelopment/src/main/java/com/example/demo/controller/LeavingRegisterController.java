@@ -27,7 +27,8 @@ public class LeavingRegisterController {
     // 退勤登録画面の表示
     @GetMapping("/LeavingRegister/{attendance_id}")
     public String LeavingRegisterForm(@PathVariable Integer attendance_id,Model model) {
-    LeavingRegisterEntity leavingregister = leavingRegisterService.findById(attendance_id);
+    LeavingRegisterEntity leavingregister = leavingRegisterService.findByAttendance_id(1);
+//    List<LeavingRegisterEntity> leavingRegister = leavingRegisterService.findByAttendance_idEquals(1);
     LeavingRegisterForm leavingRegisterUpdateRequest = new LeavingRegisterForm();
     leavingRegisterUpdateRequest.setAttendance_id(leavingregister.getAttendance_id());
     leavingRegisterUpdateRequest.setUser_id(leavingregister.getUser_id());
