@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,9 @@ public class LeavingRegisterService {
     @Autowired
     private LeavingRegisterRepository leavingRegisterRepository;
 
-//    public List<LeavingRegisterEntity> searchAll() {
-//        return leavingRegisterRepository.findAll();
+    public List<LeavingRegisterEntity> searchAll() {
+    	return leavingRegisterRepository.findAll();
+    }
 //    }
 //    public List<LeavingRegisterEntity> findByAttendance_idEquals(Integer attendance_id) {
 //		return leavingRegisterRepository.findAll();
