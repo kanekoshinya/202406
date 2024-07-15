@@ -37,12 +37,12 @@ public class LeavingRegisterController {
     leavingRegisterUpdateRequest.setLeaving_date(leavingregister.getLeaving_date());
     leavingRegisterUpdateRequest.setLeaving_time(leavingregister.getLeaving_time());
     leavingRegisterUpdateRequest.setRemarks(leavingregister.getRemarks());
-    model.addAttribute("leavingregisterUpdateRequest",leavingRegisterUpdateRequest);
+    model.addAttribute("leavingRegisterUpdateRequest",leavingRegisterUpdateRequest);
     return "LeavingRegister";
     }
 //    項目更新
     @RequestMapping("/LeavingRegister")
-    public String LeavingRegisterUpdate(@Validated @ModelAttribute LeavingRegisterForm leavingRegisterUpdateRequest,BindingResult result,Model model) {
+    public String LeavingRegisterUpdate(@Validated @ModelAttribute("leavingRegisterUpdateRequest") LeavingRegisterForm leavingRegisterUpdateRequest, BindingResult result, Model model) {
     	if(result.hasErrors()) {
     		List<String> errorList = new ArrayList<String>();
     		for (ObjectError error : result.getAllErrors()) {
