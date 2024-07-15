@@ -60,3 +60,4 @@ public class LeavingRegisterEntity {
     @Column(name = "remarks")
     private String remarks;
 }
+

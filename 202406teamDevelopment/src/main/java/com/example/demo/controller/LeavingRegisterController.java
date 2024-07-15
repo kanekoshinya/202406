@@ -56,6 +56,7 @@ public class LeavingRegisterController {
     	leavingRegisterService.update(leavingRegisterUpdateRequest);
         return String.format("redirect:/attendanceList/%d", leavingRegisterUpdateRequest.getAttendance_id());
     }
+}
 //    @GetMapping("/LeavingRegister/{attendance_id},{user_id}")
 //    public String leavingRegisterEdit(@PathVariable  Integer id, Model model) {
 //        LeavingRegisterEntity leavingregister = leavingRegisterService.findById(id);
@@ -83,4 +84,3 @@ public class LeavingRegisterController {
 //        leavingRegisterService.update(leavingregisterForm);
 //        return "redirect:/attendanceList";
 //    }
-}
