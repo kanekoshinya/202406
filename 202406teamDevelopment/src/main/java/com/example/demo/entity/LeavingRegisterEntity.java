@@ -49,8 +49,8 @@ public class LeavingRegisterEntity {
     private LocalTime leaving_time;
     
     // 稼働時間
-//    @Column(name = "working_time")
-//    private LocalTime working_time;
+    @Column(name = "working_time")
+    private LocalTime working_time;
     
     // 休憩時間
     @Column(name = "break_time")

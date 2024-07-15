@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.LeavingRegisterEntity;
 import com.example.demo.form.LeavingRegisterForm;
@@ -28,20 +28,15 @@ public class LeavingRegisterController {
     @GetMapping("/LeavingRegister/{attendance_id}")
     public String LeavingRegisterDisplay(@PathVariable Integer attendance_id,Model model) {
     LeavingRegisterEntity leavingregister = leavingRegisterService.findByAttendance_id(attendance_id);
-//    List<LeavingRegisterEntity> leavingRegister = leavingRegisterService.findByAttendance_idEquals(1);
     LeavingRegisterForm leavingRegisterUpdateRequest = new LeavingRegisterForm();
     leavingRegisterUpdateRequest.setAttendance_id(leavingregister.getAttendance_id());
     leavingRegisterUpdateRequest.setUser_id(leavingregister.getUser_id());
-    leavingRegisterUpdateRequest.setStatus(leavingregister.getStatus());
     leavingRegisterUpdateRequest.setGoing_time(leavingregister.getGoing_time());
-    leavingRegisterUpdateRequest.setLeaving_date(leavingregister.getLeaving_date());
-    leavingRegisterUpdateRequest.setLeaving_time(leavingregister.getLeaving_time());
-    leavingRegisterUpdateRequest.setRemarks(leavingregister.getRemarks());
     model.addAttribute("leavingRegisterUpdateRequest",leavingRegisterUpdateRequest);
     return "LeavingRegister";
     }
 //    項目更新
-    @RequestMapping("/LeavingRegister")
+    @PostMapping("/LeavingRegister")
     public String LeavingRegisterUpdate(@Validated @ModelAttribute("leavingRegisterUpdateRequest") LeavingRegisterForm leavingRegisterUpdateRequest, BindingResult result, Model model) {
     	if(result.hasErrors()) {
     		List<String> errorList = new ArrayList<String>();
@@ -57,30 +52,3 @@ public class LeavingRegisterController {
         return String.format("redirect:/attendanceList/%d", leavingRegisterUpdateRequest.getAttendance_id());
     }
 }
-//    @GetMapping("/LeavingRegister/{attendance_id},{user_id}")
-//    public String leavingRegisterEdit(@PathVariable  Integer id, Model model) {
-//        LeavingRegisterEntity leavingregister = leavingRegisterService.findById(id);
-//        LeavingRegisterForm subjectUpdateRequest = new LeavingRegisterForm();
-//        subjectUpdateRequest.setAttendance_id(leavingregister.getAttendance_id());
-//        subjectUpdateRequest.setUser_id(leavingregister.getUser_id());
-//        model.addAttribute("subjectUpdateRequest", subjectUpdateRequest);
-//        return "LeavingRegister";
-//    }
-    
-//     退勤登録
-//    @PostMapping("/LeavingRegister")
-//    public String LeavingRegisterUpdate(@Validated LeavingRegisterForm leavingregisterForm, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//             入力チェックエラーの場合
-//            List<String> errorList = new ArrayList<>();
-//            for (ObjectError error : result.getAllErrors()) {
-//                errorList.add(error.getDefaultMessage());
-//            }
-//            model.addAttribute("LeavingRegisterForm", leavingregisterForm);
-//            model.addAttribute("validationError", errorList);
-//            return "LeavingRegister";
-//        }
-//         登録
-//        leavingRegisterService.update(leavingregisterForm);
-//        return "redirect:/attendanceList";
-//    }
