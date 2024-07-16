@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.AttendanceListEntity;
 import com.example.demo.service.AttendanceListService;
@@ -14,9 +15,9 @@ public class AttendanceListController {
 	@Autowired
 	AttendanceListService AttendanceListService;
 
-	@GetMapping("/attendanceList")
-	public String attendanceList(Model model) {
-		List<AttendanceListEntity> attendanceList = AttendanceListService.findByUser_idEquals(1);
+	@GetMapping("/attendanceList/{user_id}")
+	public String attendanceList(@PathVariable Integer user_id,Model model) {
+		List<AttendanceListEntity> attendanceList = AttendanceListService.findByUser_idEquals(user_id);
 		model.addAttribute("attendanceList", attendanceList);
 		return "attendanceList";
 	}
@@ -26,9 +27,4 @@ public class AttendanceListController {
 	    return "LeavingRegister"; // Thymeleafテンプレート名
 	}
 
-	@GetMapping("/userList")
-	public String userList(Model model) {
-	    // UserListの処理
-	    return "userList"; // Thymeleafテンプレート名
-	}
 }
