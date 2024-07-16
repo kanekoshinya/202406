@@ -11,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.form.GoingRegisterForm;
@@ -22,9 +23,12 @@ public class GoingRegisterController {
 	 GoingRegisterService goingRegisterService;
 	
 	 //登録するための画面表示
-	 @GetMapping("/goingRegistration")
-	  public String goingRegister(Model model) {
-	    model.addAttribute("goingRegisterForm", new GoingRegisterForm());
+	 @GetMapping("/goingRegistration/{user_id}")
+	  public String goingRegister(@PathVariable Integer user_id,Model model) {
+		GoingRegisterForm goingRegisterForm = new GoingRegisterForm();
+		goingRegisterForm.setUser_id(user_id);
+	    model.addAttribute("goingRegisterForm", goingRegisterForm);
+	    
 	    return "goingRegistration";
 	  }
 
@@ -44,6 +48,6 @@ public class GoingRegisterController {
 	   }
 	   // 登録
 	 goingRegisterService.create(goingRegisterForm);
-	   return "redirect:/attendanceList";
+	   return "redirect:/userList";
 	 }
 }
