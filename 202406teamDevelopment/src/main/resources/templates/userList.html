@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー一覧</title>
+	<link th:href="@{/css/userList.css}" rel="stylesheet"></link>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <h1>ユーザー一覧</h1>
+        </header>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ユーザーID </th>
+                    <th>名前 </th>
+                    <th>フリガナ </th>
+                    <th>メールアドレス </th>
+                    <th>パスワード </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user_tb: ${userlist}" th:object="${user_tb}">
+                    <td th:text="*{user_id}"></td>
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{furigana}"></td>
+                    <td th:text="*{mail}"></td>
+                    <td th:text="*{password}"></td>
+                    <td class="btn_01"><a th:href="@{/goingRegistration/{user_id}(user_id=*{user_id})}" class="btn">出勤登録</a></td>
+                    <td><a th:href="@{/attendanceList/{user_id}(user_id=*{user_id})}" class="btn">勤怠一覧</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="footer">
+        </footer>
+    </div>
+</body>
+
+</html>
