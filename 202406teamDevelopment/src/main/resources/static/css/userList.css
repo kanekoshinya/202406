@@ -1,0 +1,75 @@
+#wrapper {
+    /* 共通の処理 */
+    width: 100%;
+}
+
+.header {
+    background-color: #4689FF;
+    height: 100px;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+.table {
+    margin: auto;
+    border-collapse: collapse;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3.2rem;
+}
+
+.table th,
+td {
+    border-bottom: 1px solid black;
+    padding: 5px 15px;
+}
+
+.table th {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table td {
+    font-size: 20px;
+}
+
+.footer {
+    background-color: #4689FF;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 100px;
+    padding: 5px 10px 5px 10px;
+    color: #000000;
+    transition: 0.3s ease-in-out;
+    border: 0.2rem solid #4689ff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
