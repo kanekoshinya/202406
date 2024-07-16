@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退勤登録</title>
+    <link th:href="@{/css/LeavingRegister.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <h1>退勤登録</h1>
+        </header>
+        <form th:action="@{/LeavingRegister}" th:object="${leavingRegisterUpdateRequest}" method="post">
+            <div class="form">
+                <div class="form-group">
+                    <div class="form-group-left">
+                        <div class="text">
+                            <div class="text_1">勤怠ID</div>
+                            <div class="text_1">ユーザーID</div>
+                            <div class="text_1">ステータス</div>
+                            <div class="text_1">退勤日</div>
+                        </div>
+                        <div class="parts">
+                            <div class="cp_iptxt">
+                                <input type="text" th:field="*{attendance_id}">
+                            </div>
+                            <div class="cp_iptxt">
+                                <input type="text" th:field="*{user_id}">
+                            </div>
+                            <div class="box">
+                                <select th:field="*{status}">
+                                    <option value="">---選択---</option>
+                                    <option value="退勤">退勤</option>
+                                    <option value="早退">早退</option>
+                                </select>
+                                <span class="error-message" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
+                            </div>
+                            <div class="date_1">
+                                <input type="date" th:field="*{leaving_date}">
+								<span class="error-message" th:if="${#fields.hasErrors('leaving_date')}" th:errors="*{leaving_date}"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-right">
+                        <div class="text">
+                            <div class="text_1">退勤時間</div>
+                            <div class="text_1">休憩時間</div>
+                            <div class="text_1">備考</div>
+                        </div>
+                        <div class="parts">
+                            <div class="time_1">
+                                <input type="time" th:field="*{leaving_time}">
+                                <span class="error-message" th:if="${#fields.hasErrors('leaving_time')}" th:errors="*{leaving_time}"></span>
+                            </div>
+                            <div class="time_1">
+                                <input type="time" th:field="*{break_time}">
+								<span class="error-message" th:if="${#fields.hasErrors('break_time')}" th:errors="*{break_time}"></span>
+                            </div>
+                            <div class="cp_iptxt">
+                                <input type="text" th:field="*{remarks}">
+                                <span class="error-message" th:if="${#fields.hasErrors('remarks')}" th:errors="*{remarks}"></span>
+                            </div>
+                            <div class="hidden">
+                                <input type="hidden" th:field="*{going_time}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a th:href="@{/attendanceList/(attendance_id=*{attendance_id})}" class="btn">戻る</a>
+                    <input type="submit" name="btn" value="登録" class="btn">
+                </div>
+            </div>
+        </form>
+        <footer class="footer">
+        </footer>
+    </div>
+</body>
+
+</html>

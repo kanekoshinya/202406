@@ -1,0 +1,160 @@
+#wrapper {
+    /* 共通の処理 */
+    width: 100%;
+}
+
+.header {
+    background-color: #4689FF;
+    height: 100px;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-group {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 20%;
+    left: 0;
+    margin: auto;
+    width: 70%;
+    height: 3.2rem;
+}
+
+.form-group-left {
+    display: flex;
+}
+
+.form-group-right {
+    display: flex;
+}
+
+.text-center {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    margin: auto;
+    width: 50%;
+    height: 3.2rem;
+}
+
+.text_1 {
+    margin-bottom: 30px;
+}
+
+.parts {
+    margin-left: 50px;
+}
+
+/* テキスト */
+.cp_iptxt input[type='text'] {
+    width: 250px;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
+    padding: 0.3em;
+    font-size: 20px;
+    margin-bottom: 30px;
+    background-color: #edebeb;
+}
+
+/* ステータス */
+.box select {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid#736d6d;
+    border-radius: 3px;
+}
+
+/* 退勤日 */
+.date_1 input[type='date'] {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
+}
+
+/* 退勤時間、休憩時間 */
+.time_1 input[type='time'] {
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #edebeb;
+    margin-bottom: 30px;
+    border: 1px solid #736d6d;
+    border-radius: 3px;
+}
+
+/* 出勤時間 */
+.hidden {
+    display: none;
+}
+
+/* ボタン */
+.btn {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 150px;
+    padding: 10px 25px;
+    color: #000000;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 0.2rem solid #4689ff;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+}
+
+/* フッター */
+.footer {
+    background-color: #4689ff;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* バリデーションメッセージ */
+.error-message {
+    color: red;
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
