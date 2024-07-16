@@ -41,7 +41,7 @@
                     <td th:text="*{break_time}"></td>
                     <td th:text="*{remarks}"></td>
                     <td></td>
-                    <td><a th:href="@{/leavingRegister/(user_id=*{user_id})}" class="btn">退勤登録</a></td>
+                    <td><a th:href="@{/LeavingRegister/{attendance_id}(attendance_id=*{attendance_id})}" class="btn">退勤登録</a></td>
                 </tr>
             </tbody>
            
