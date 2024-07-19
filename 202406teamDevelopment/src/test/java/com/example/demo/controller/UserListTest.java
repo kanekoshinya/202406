@@ -47,7 +47,7 @@ class UserListTest {
   userEntity.setPassword(null);
   userlist.add(userEntity);
   //searchAllメソッドが呼び出された際の返却値を設定する
-  when(userlistService.searchAll()).thenReturn(userlist);
+  when(userlistService.getAllUsers()).thenReturn(userlist);
  
 //実際に下記のURLにリクエスト送る「ステータス・HTML返却変数・レスポンスビュー名」が期待値通りか確認する
  mockMvc.perform(get("/UserList"))
@@ -58,13 +58,13 @@ class UserListTest {
    //リクエストを呼ばれた際のHTMLファイル名が正常である事の確認
    .andExpect(view().name("UserList"));
  
- //searchAllメソッドを呼び出した際のリストの格納件数をcountに代入する
- int count = userlistService.searchAll().size();
- //searchAllメソッドを呼び出した際のリストの格納件数が期待通りか確認する
+ //getAllUsersメソッドを呼び出した際のリストの格納件数をcountに代入する
+ int count = userlistService.getAllUsers().size();
+ //getAllUsersメソッドを呼び出した際のリストの格納件数が期待通りか確認する
  assertEquals(0, count);
  
- //今回のsearchAllメソッドがmockMvcでの呼び出しと直接searchAllを呼び出しているため正常に2回、メソッドが呼び出されているか確認
- Mockito.verify(userlistService, times(2)).searchAll();
+ //今回のgetAllUsersメソッドがmockMvcでの呼び出しと直接getAllUsersを呼び出しているため正常に2回、メソッドが呼び出されているか確認
+ Mockito.verify(userlistService, times(2)).getAllUsers();
 }
  
  /**
@@ -85,8 +85,8 @@ class UserListTest {
   userEntity.setMail("yamada.tarou.12345@gmail.com");
   userEntity.setPassword("tarotaro");
   userlist.add(userEntity);
-  //searchAllメソッドが呼び出された際の返却値を設定する
-  when(userlistService.searchAll()).thenReturn(userlist);
+  //getAllUsersメソッドが呼び出された際の返却値を設定する
+  when(userlistService.getAllUsers()).thenReturn(userlist);
   
 //実際に下記のURLにリクエスト送る「ステータス・HTML返却変数・レスポンスビュー名」が期待値通りか確認する
  mockMvc.perform(get("/UserList"))
@@ -97,13 +97,13 @@ class UserListTest {
    //リクエストを呼ばれた際のHTMLファイル名が正常である事の確認
    .andExpect(view().name("UserList"));
  
- //searchAllメソッドを呼び出した際のリストの格納件数をcountに代入する
- int count = userlistService.searchAll().size();
- //searchAllメソッドを呼び出した際のリストの格納件数が期待通りか確認する
+ //getAllUsersメソッドを呼び出した際のリストの格納件数をcountに代入する
+ int count = userlistService.getAllUsers().size();
+ //getAllUsersメソッドを呼び出した際のリストの格納件数が期待通りか確認する
  assertEquals(1, count);
  
- //今回のsearchAllメソッドがmockMvcでの呼び出しと直接searchAllを呼び出しているため正常に2回、メソッドが呼び出されているか確認
- Mockito.verify(userlistService, times(2)).searchAll();
+ //今回のgetAllUsersメソッドがmockMvcでの呼び出しと直接getAllUsersを呼び出しているため正常に2回、メソッドが呼び出されているか確認
+ Mockito.verify(userlistService, times(2)).getAllUsers();
  }
  
  /**
@@ -131,8 +131,8 @@ class UserListTest {
   userEntity.setMail("suzuki.hanako.67890@gmail.com");
   userEntity.setPassword("hanahana");
   userlist.add(userEntity);
-  //searchAllメソッドが呼び出された際の返却値を設定する
-  when(userlistService.searchAll()).thenReturn(userlist);
+  //getAllUsersメソッドが呼び出された際の返却値を設定する
+  when(userlistService.getAllUsers()).thenReturn(userlist);
   
 //実際に下記のURLにリクエスト送る「ステータス・HTML返却変数・レスポンスビュー名」が期待値通りか確認する
  mockMvc.perform(get("/UserList"))
@@ -143,12 +143,12 @@ class UserListTest {
    //リクエストを呼ばれた際のHTMLファイル名が正常である事の確認
    .andExpect(view().name("UserList"));
  
- //searchAllメソッドを呼び出した際のリストの格納件数をcountに代入する
- int count = userlistService.searchAll().size();
- //searchAllメソッドを呼び出した際のリストの格納件数が期待通りか確認する
+ //getAllUsersメソッドを呼び出した際のリストの格納件数をcountに代入する
+ int count = userlistService.getAllUsers().size();
+ //getAllUsersメソッドを呼び出した際のリストの格納件数が期待通りか確認する
  assertEquals(1, count);
  
- //今回のsearchAllメソッドがmockMvcでの呼び出しと直接searchAllを呼び出しているため正常に2回、メソッドが呼び出されているか確認
- Mockito.verify(userlistService, times(2)).searchAll();
+ //今回のgetAllUsersメソッドがmockMvcでの呼び出しと直接getAllUsersを呼び出しているため正常に2回、メソッドが呼び出されているか確認
+ Mockito.verify(userlistService, times(2)).getAllUsers();
  }
 }
