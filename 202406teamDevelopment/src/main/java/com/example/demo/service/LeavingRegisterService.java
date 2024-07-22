@@ -19,9 +19,9 @@ public class LeavingRegisterService {
     @Autowired
     private LeavingRegisterRepository leavingRegisterRepository;
 
-//    public List<LeavingRegisterEntity> searchAll() {
-//    	return leavingRegisterRepository.findAll();
-//    }
+    public List<LeavingRegisterEntity> searchAll() {
+    	return leavingRegisterRepository.findAll();
+    }
 
     public List<LeavingRegisterEntity> findByAttendance_idEquals(Integer attendance_id) {
 		return leavingRegisterRepository.findAll();
