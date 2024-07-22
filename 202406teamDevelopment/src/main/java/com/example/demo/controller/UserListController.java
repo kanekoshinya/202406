@@ -19,7 +19,7 @@ public class UserListController {
 //	ユーザー一覧画面表示
 	@GetMapping("userList")
     public String getUserList(Model model) {
-        List<UserListEntity> userlist = userlistService.getAllUsers();
+        List<UserListEntity> userlist = userlistService.searchAll();
         userlist.forEach(user -> user.setPassword(maskPassword(user.getPassword())));
         model.addAttribute("userlist", userlist);
         return "userList";

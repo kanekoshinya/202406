@@ -17,7 +17,7 @@ public class UserListService {
 
 	// 全ユーザー検索メソッド
 	// 検索結果
-	public List<UserListEntity> getAllUsers() {
+	public List<UserListEntity> searchAll() {
 		return userlistRepository.findAll();
 
 	}
