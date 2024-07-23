@@ -5,8 +5,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,31 +49,38 @@ public class LeavingRegisterControllerTest {
 	    @Test
 	    public void Test01() throws Exception {
 	    	//事前にServiceのsearchAllメソッドを呼び出された際のレスポンス形式を作成する
-	    	  List<LeavingRegisterEntity> leavingRegisterList = new ArrayList<LeavingRegisterEntity>();
+//	    	  List<LeavingRegisterEntity> leavingRegisterList = new ArrayList<LeavingRegisterEntity>();
 	    	  LeavingRegisterEntity leavingRegisterEntity = new LeavingRegisterEntity();
 	    	  //レスポンス予定の値を設定しリストに格納する
+	    	  leavingRegisterEntity.setAttendance_id(1);
 	    	  leavingRegisterEntity.setUser_id(0);
 	    	  leavingRegisterEntity.setStatus(null);
 	    	  leavingRegisterEntity.setLeaving_date(null);
 	    	  leavingRegisterEntity.setLeaving_time(null);
 	    	  leavingRegisterEntity.setBreak_time(null);
-	    	  leavingRegisterList.add(leavingRegisterEntity);
+//	    	  leavingRegisterList.add(leavingRegisterEntity);
+	    	 
+	    	  LeavingRegisterForm leavingRegisterUpdateRequest = new LeavingRegisterForm();
+	    	    leavingRegisterUpdateRequest.setAttendance_id(leavingRegisterEntity.getAttendance_id());
+	    	    leavingRegisterUpdateRequest.setUser_id(leavingRegisterEntity.getUser_id());
+	    	    leavingRegisterUpdateRequest.setGoing_time(leavingRegisterEntity.getGoing_time());
+	    	   
 	    	//searchAllメソッドが呼び出された際の返却値を設定する
-	    	  when(leavingRegisterService.searchAll()).thenReturn(leavingRegisterList);
+	    	  when(leavingRegisterService.findByAttendance_id(1)).thenReturn(leavingRegisterEntity);
 	    	//実際に下記のURLにリクエスト送る「ステータス・HTML返却変数・レスポンスビュー名」が期待値通りか確認する 
-	        mockMvc.perform(get("/LeavingRegister/{attendance_id}"))
+	        mockMvc.perform(get("/LeavingRegister/1"))
 	          //返却HTTPステータスが200(正常)である事の確認
 	            .andExpect(status().isOk())
 	          //画面へ返却するレスポンスリストとして正常である事の確認
-	            .andExpect(model().attribute("attendanceList", leavingRegisterList))
+	            .andExpect(model().attribute("leavingRegisterUpdateRequest", leavingRegisterUpdateRequest))
 	            //リクエストを呼ばれた際のHTMLファイル名が正常である事の確認
 	            .andExpect(view().name("LeavingRegister"));
 	        //searchAllメソッドを呼び出した際のリストの格納件数をcountに代入する
-	        int count =  leavingRegisterService.searchAll().size();
+//	        int count =  leavingRegisterService.findByAttendance_id(1).size();
 	      //searchAllメソッドを呼び出した際のリストの格納件数が期待通りか確認する
-	        assertEquals(0, count);
+//	        assertEquals(0, count);
 	      //今回のsearchAllメソッドがmockMvcでの呼び出しと直接searchAllを呼び出しているため正常に2回、メソッドが呼び出されているか確認
-	        Mockito.verify(leavingRegisterService, times(2)).searchAll();
+	        Mockito.verify(leavingRegisterService, times(1)).findByAttendance_id(1);
 	    }
 	    
 //	    正常系　バリデーションエラーが表示されずに登録できる
@@ -81,13 +88,14 @@ public class LeavingRegisterControllerTest {
 	    @Test
 	    public void Test02() throws Exception {
 	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
-	    	leavingRegisterForm.setUser_id("1");
+	    	leavingRegisterForm.setAttendance_id(1);
+	    	leavingRegisterForm.setUser_id(1);
 	    	leavingRegisterForm.setStatus("退勤");
-	    	leavingRegisterForm.setLocalDate.of("2024/07/10");
-	    	leavingRegisterForm.setLeaving_time("18:00");
-	    	leavingRegisterForm.setBreak_time("1:00");
-	    	 mockMvc.perform(get("/LeavingRegister/{attendance_id}"))
-	    	 .param("leavingRegister","1","退勤","2024/07/10","18:00","1:00")
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07,10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	 mockMvc.perform(post("/LeavingRegister/1"))
+//	    	 .param("leavingRegister","1","退勤","2024/07/10","18:00","1:00")
 	    	 .andExpect(status().isOk())
 	    	 .andExpect(model().hasNoErrors())
 	    	 .andExpect(view().name("LeavingRegister"));	   
@@ -97,12 +105,13 @@ public class LeavingRegisterControllerTest {
 	    @Test
 	    public void Test03() throws Exception {
 	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
-	    	leavingRegisterForm.setUser_id("");
+	    	leavingRegisterForm.setUser_id(null);
 	    	leavingRegisterForm.setStatus("退勤");
-	    	leavingRegisterForm.setLeaving_date("2024/07/10");
-	    	leavingRegisterForm.setLeaving_time("18:00");
-	    	leavingRegisterForm.setBreak_time("1:00");
-	    	 mockMvc.perform(get("/LeavingRegister"))
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
 	    	 
 	    	 .andExpect(model().hasNoErrors())
 	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
@@ -117,7 +126,6 @@ public class LeavingRegisterControllerTest {
 	    	 assertThat("ユーザーIDを入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
 	    	 
 	    }
-	    
 	    
 	    
 	    
