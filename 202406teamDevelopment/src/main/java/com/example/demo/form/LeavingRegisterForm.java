@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,7 +22,7 @@ public class LeavingRegisterForm implements Serializable {
     private Integer user_id;
     
     // ステータス
-    @NotNull(message = "ステータスを入力してください")
+    @NotEmpty(message = "ステータスを入力してください")
     private String status;
     
     // 退勤日

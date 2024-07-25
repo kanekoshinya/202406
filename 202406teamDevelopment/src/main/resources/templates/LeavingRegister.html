@@ -31,7 +31,7 @@
                                 <input type="text" th:field="*{user_id}">
                             </div>
                             <div class="box">
-                                <select th:field="*{status}">
+                                <select id="status" name=“status” th:field="*{status}">
                                     <option value="">---選択---</option>
                                     <option value="退勤">退勤</option>
                                     <option value="早退">早退</option>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a th:href="@{/attendanceList/(attendance_id=*{attendance_id})}" class="btn">戻る</a>
+                    <a th:href="@{/attendanceList/{attendance_id}(attendance_id=*{attendance_id})}" class="btn">戻る</a>
                     <input type="submit" name="btn" value="登録" class="btn">
                 </div>
             </div>
