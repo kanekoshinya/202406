@@ -94,11 +94,11 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07,10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform(post("/LeavingRegister/1"))
+	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("LeavingRegisterForm",leavingRegisterForm))
 //	    	 .param("leavingRegister","1","退勤","2024/07/10","18:00","1:00")
-	    	 .andExpect(status().isOk())
+	    	 .andExpect(status().is(302))
 	    	 .andExpect(model().hasNoErrors())
-	    	 .andExpect(view().name("LeavingRegister"));	   
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
 	    }
 //	    異常系　バリデーションエラーに引っかかっている
 	    
@@ -113,9 +113,9 @@ public class LeavingRegisterControllerTest {
 	    	 mockMvc.perform(post("/LeavingRegister"))
 	    	 
 	    	 
-	    	 .andExpect(model().hasNoErrors())
+	    	 .andExpect(model().hasErrors())
 	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("LeavingRegister"));	   
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
 	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
 	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
 	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
@@ -126,7 +126,126 @@ public class LeavingRegisterControllerTest {
 	    	 assertThat("ユーザーIDを入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
 	    	 
 	    }
-	    
-	    
-	    
+	    @Test
+	    public void Test04() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("");
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
+	    	 
+	    	 .andExpect(model().hasErrors())
+	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
+	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("ステータスを入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	    @Test
+	    public void Test05() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("退勤");
+	    	leavingRegisterForm.setLeaving_date(null);
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
+	    	 
+	    	 .andExpect(model().hasErrors())
+	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
+	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("退勤日を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	    @Test
+	    public void Test06() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("退勤");
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(null);
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
+	    	 
+	    	 .andExpect(model().hasErrors())
+	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
+	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("退勤時間を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	    @Test
+	    public void Test07() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("退勤");
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(null);
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
+	    	 
+	    	 .andExpect(model().hasErrors())
+	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
+	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("休憩時間を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	    @Test
+	    public void Test08() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("退勤");
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
+	    	leavingRegisterForm.setRemarks("12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901");
+	    	 mockMvc.perform(post("/LeavingRegister"))
+	    	 
+	    	 
+	    	 .andExpect(model().hasErrors())
+	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
+	    	 .andExpect(view().name("redirect:/LeavingRegister"));	   
+	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("備考は100文字以下で入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	   
 }
