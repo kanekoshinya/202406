@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
@@ -105,40 +106,18 @@ public class LeavingRegisterControllerTest {
 	    @Test
 	    public void Test03() throws Exception {
 	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
-	    	leavingRegisterForm.setUser_id(null);
-	    	leavingRegisterForm.setStatus("退勤");
-	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
-	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
-	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
-	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
-	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
-	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
-	    	 
-	    	 int count = bindingResult .getErrorCount(); 
-	    	 
-	    	 assertEquals(1,count);
-	    	 assertThat("ユーザーIDを入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
-	    	 
-	    }
-	    @Test
-	    public void Test04() throws Exception {
-	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
 	    	leavingRegisterForm.setUser_id(1);
 	    	leavingRegisterForm.setStatus("");
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
+	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	 .andExpect(view().name("LeavingRegister"));	   
 	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
 	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterUpdateRequest");
 	    	 
 	    	 int count = bindingResult .getErrorCount(); 
 	    	 
@@ -147,20 +126,20 @@ public class LeavingRegisterControllerTest {
 	    	 
 	    }
 	    @Test
-	    public void Test05() throws Exception {
+	    public void Test04() throws Exception {
 	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
 	    	leavingRegisterForm.setUser_id(1);
 	    	leavingRegisterForm.setStatus("退勤");
 	    	leavingRegisterForm.setLeaving_date(null);
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
-	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
-	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
-	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(model().hasErrors())
+	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(view().name("LeavingRegister"));	   
+	   	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	   	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	   	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterUpdateRequest");
 	    	 
 	    	 int count = bindingResult .getErrorCount(); 
 	    	 
@@ -169,25 +148,47 @@ public class LeavingRegisterControllerTest {
 	    	 
 	    }
 	    @Test
-	    public void Test06() throws Exception {
+	    public void Test05() throws Exception {
 	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
 	    	leavingRegisterForm.setUser_id(1);
 	    	leavingRegisterForm.setStatus("退勤");
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(null);
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
-	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
-	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
-	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
-	    	 
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(model().hasErrors())
+	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(view().name("LeavingRegister"));	   
+	   	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	   	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	   	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterUpdateRequest");
+	   	    	 
 	    	 int count = bindingResult .getErrorCount(); 
 	    	 
 	    	 assertEquals(1,count);
 	    	 assertThat("退勤時間を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
+	    	 
+	    }
+	    @Test
+	    public void Test06() throws Exception {
+	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
+	    	leavingRegisterForm.setUser_id(1);
+	    	leavingRegisterForm.setStatus("退勤");
+	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
+	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
+	    	leavingRegisterForm.setBreak_time(null);
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(model().hasErrors())
+	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(view().name("LeavingRegister"));	   
+	   	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	   	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	   	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterUpdateRequest");
+	   	    	 
+	    	 int count = bindingResult .getErrorCount(); 
+	    	 
+	    	 assertEquals(1,count);
+	    	 assertThat("休憩時間を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
 	    	 
 	    }
 	    @Test
@@ -197,38 +198,16 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setStatus("退勤");
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
-	    	leavingRegisterForm.setBreak_time(null);
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
-	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
-	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
-	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
-	    	 
-	    	 int count = bindingResult .getErrorCount(); 
-	    	 
-	    	 assertEquals(1,count);
-	    	 assertThat("休憩時間を入力してください").isEqualTo(bindingResult.getFieldError().getDefaultMessage());
-	    	 
-	    }
-	    @Test
-	    public void Test08() throws Exception {
-	    	LeavingRegisterForm leavingRegisterForm = new LeavingRegisterForm();
-	    	leavingRegisterForm.setUser_id(1);
-	    	leavingRegisterForm.setStatus("退勤");
-	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
-	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
 	    	leavingRegisterForm.setRemarks("12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901");
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
-	    	 .andExpect(model().hasErrors())
-	    	 .andExpect(model().attribute("leavingRegisterForm",leavingRegisterForm))
-	    	 .andExpect(view().name("redirect:/attendanceList/1"));	   
-	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
-	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
-	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterForm");
-	    	 
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(model().hasErrors())
+	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
+	   	    	 .andExpect(view().name("LeavingRegister"));	   
+	   	    	 ModelAndView mnv = actions.andReturn().getModelAndView();
+	   	    	 BindingResult bindingResult = (BindingResult) mnv.getModel()
+	   	    			 .get(BindingResult.MODEL_KEY_PREFIX + "leavingRegisterUpdateRequest");
+	   	    	  
 	    	 int count = bindingResult .getErrorCount(); 
 	    	 
 	    	 assertEquals(1,count);
