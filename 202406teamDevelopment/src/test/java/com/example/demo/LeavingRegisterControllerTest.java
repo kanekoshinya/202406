@@ -95,7 +95,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07,10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	 mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	 mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 //	    	 .param("leavingRegister","1","退勤","2024/07/10","18:00","1:00")
 	    	 .andExpect(status().is(302))
 	    	 .andExpect(model().hasNoErrors())
@@ -111,7 +111,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	    	 .andExpect(model().hasErrors())
 	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
 	    	 .andExpect(view().name("LeavingRegister"));	   
@@ -133,7 +133,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(null);
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(model().hasErrors())
 	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(view().name("LeavingRegister"));	   
@@ -155,7 +155,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(null);
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
-	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(model().hasErrors())
 	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(view().name("LeavingRegister"));	   
@@ -177,7 +177,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_date(LocalDate.of(2024, 07, 10));
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(null);
-	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(model().hasErrors())
 	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(view().name("LeavingRegister"));	   
@@ -200,7 +200,7 @@ public class LeavingRegisterControllerTest {
 	    	leavingRegisterForm.setLeaving_time(LocalTime.of(18, 00));
 	    	leavingRegisterForm.setBreak_time(LocalTime.of(1, 00));
 	    	leavingRegisterForm.setRemarks("12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901");
-	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
+	    	ResultActions actions =mockMvc.perform((post("/LeavingRegister/update")).flashAttr("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(model().hasErrors())
 	   	    	 .andExpect(model().attribute("leavingRegisterUpdateRequest",leavingRegisterForm))
 	   	    	 .andExpect(view().name("LeavingRegister"));	   

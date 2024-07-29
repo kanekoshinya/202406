@@ -36,7 +36,7 @@ public class LeavingRegisterController {
     return "LeavingRegister";
     }
 //    項目更新
-    @PostMapping("/LeavingRegister")
+    @PostMapping("/LeavingRegister/update")
     public String LeavingRegisterUpdate(@Validated @ModelAttribute("leavingRegisterUpdateRequest") LeavingRegisterForm leavingRegisterUpdateRequest, BindingResult result, Model model) {
     	if(result.hasErrors()) {
     		List<String> errorList = new ArrayList<String>();
