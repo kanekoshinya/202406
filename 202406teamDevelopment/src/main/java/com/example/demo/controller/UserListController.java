@@ -15,9 +15,9 @@ public class UserListController {
 
 	@Autowired
 	UserListService userlistService;
-	
+
 //	ユーザー一覧画面表示
-	@GetMapping("userList")
+	@GetMapping("/userList")
     public String getUserList(Model model) {
         List<UserListEntity> userlist = userlistService.getAllUsers();
         userlist.forEach(user -> user.setPassword(maskPassword(user.getPassword())));

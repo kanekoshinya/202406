@@ -21,27 +21,27 @@ import lombok.Data;
 @Table(name = "attendance", schema = "public")
 
 public class GoingRegisterEntity {
-//	  勤怠ID 
+//	  勤怠ID
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  @Column(name = "attendance_id")
 	  private Integer attendance_id;
-//	  ユーザーID 
+//	  ユーザーID
 	  @Column(name = "user_id")
 	  private Integer user_id;
-//	  ステータス 
+//	  ステータス
 	  @Column(name = "status")
 	  private String status;
-//	  出勤日 
+//	  出勤日
 	  @DateTimeFormat(pattern = "yyyy-MM-dd")
 	  @Column(name = "going_date")
 	  private LocalDate going_date;
-//	  出勤時間 
+//	  出勤時間
 	  @DateTimeFormat(pattern = "HH:mm")
 	  @Column(name = "going_time")
 	  private LocalTime going_time;
-//	  備考 
+//	  備考
 	  @Column(name = "remarks")
 	  private String remarks;
-	  
+
 }

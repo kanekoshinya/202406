@@ -23,7 +23,7 @@ public class LeavingRegisterEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "attendance_id")
     private Integer attendance_id;
-    
+
     // ユーザーID
     @Column(name = "user_id")
     private Integer user_id;
@@ -43,19 +43,19 @@ public class LeavingRegisterEntity {
     // 退勤日
     @Column(name = "leaving_date")
     private LocalDate leaving_date;
-    
+
     // 退勤時間
     @Column(name = "leaving_time")
     private LocalTime leaving_time;
-    
+
     // 稼働時間
     @Column(name = "working_time")
     private LocalTime working_time;
-    
+
     // 休憩時間
     @Column(name = "break_time")
     private LocalTime break_time;
-        
+
     // 備考
     @Column(name = "remarks")
     private String remarks;

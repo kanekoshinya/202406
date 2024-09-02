@@ -26,7 +26,7 @@ public class AttendanceListEntity {
 		@Column(name = "attendance_id")
 		private Integer attendance_id;
 
-//		ユーザーID 
+//		ユーザーID
 		@Column(name = "user_id")
 		private Integer user_id;
 
@@ -43,27 +43,27 @@ public class AttendanceListEntity {
 		@DateTimeFormat(pattern = "HH:mm")
 		@Column(name = "going_time")
 		private LocalTime going_time;
-		
+
 //		退勤日
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		@Column(name = "leaving_date")
 		private LocalDate leaving_date;
-		
+
 //		退勤時間
 		@DateTimeFormat(pattern = "HH:mm")
 		@Column(name = "leaving_time")
 		private LocalTime leaving_time;
-		
+
 //		稼働時間
 		@DateTimeFormat(pattern = "HH:mm")
 		@Column(name = "working_time")
 		private LocalTime working_time;
-		
+
 //		休憩時間
 		@DateTimeFormat(pattern = "HH:mm")
 		@Column(name = "break_time")
 		private LocalTime break_time;
-		
+
 //		備考
 		@Column(name = "remarks")
 		private String remarks;
